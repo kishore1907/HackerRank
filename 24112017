@@ -1,0 +1,179 @@
+
+-------------------------------------------------------
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static long maximumSum(long[] c, long m) {
+        long max=0;
+        
+        if(c.length==0){
+            return 0;
+        }
+       
+	for(int i=0;i<c.length;i++){
+			
+	for(int j=0;j<c.length;j++){
+	int comb=((i+1)<c.length)?i+1: c.length;
+        long total=0;
+	for(int k=j;k<comb;k++){
+	 total+=c[k];
+	}
+        if(max<total%m){
+            max=(long)total%m;
+        }
+   }
+  }
+        return max;
+    }    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int q = in.nextInt();
+        for(int a0 = 0; a0 < q; a0++){
+            int n = in.nextInt();
+            long m = in.nextLong();
+            long[] a = new long[n];
+            for(int a_i = 0; a_i < n; a_i++){
+                a[a_i] = in.nextLong();
+            }
+            long result = maximumSum(a, m);
+            System.out.println(result);
+        }
+        in.close();
+    }}
+------------------------------------------------------
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    static int pairs(int[] c,int k) {
+        int count=0;
+        if(c.length==0)
+        {
+            return 0;
+        }
+        for (int i = 0; i < c.length; i++) {
+			for (int j = i+1; j < c.length; j++) {
+				if(c[i]-c[j]==k || c[j]-c[i]==k){
+                    count++;
+                }
+			}
+		}
+        return count;
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int res;
+        
+        String n = in.nextLine();
+        String[] n_split = n.split(" ");
+        
+        int _a_size = Integer.parseInt(n_split[0]);
+        int _k = Integer.parseInt(n_split[1]);
+        
+        int[] _a = new int[_a_size];
+        int _a_item;
+        String next = in.nextLine();
+        String[] next_split = next.split(" ");
+        
+        for(int _a_i = 0; _a_i < _a_size; _a_i++) {
+            _a_item = Integer.parseInt(next_split[_a_i]);
+            _a[_a_i] = _a_item;
+        }
+        res = pairs(_a,_k);
+        System.out.println(res);
+    }
+}
+
+----------------------------------------------------------------------
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       int n = in.nextInt();
+        
+            long[] a = new long[n];
+            for(int a_i = 0; a_i < n; a_i++){
+                a[a_i] = in.nextLong();
+            }
+        int m=in.nextInt();
+        long[] b = new long[n];
+            for(int a_i = 0; a_i < n; a_i++){
+                b[a_i] = in.nextLong();
+            }
+    checkMissingNumbers(a,b);
+}
+    
+    private static void checkMissingNumbers(int[] a,int [] b){
+        Map a1=new HashMap();
+        Map b1=new HashMap();
+        
+        a1=getMap(a);
+        b1=getMap(b);
+        
+        
+        for(Entry<Integer,Integer> pair : b1.entrySet()){
+            if(a1.get(pair.getKey())==pair.getValue()){
+                System.out.println(pair.getValue())
+            }
+        }
+        
+    }
+    private static int[] getMap(int[] x){
+        Map map=new HashMap();
+        for(int i;i<x.length;i++){
+            int count=0;
+            map.put(x[i],map.get[i]+1);
+        }
+        return map;
+    }
+    
+    
+}
+
+--------------------------------------------------
+
+package hackerRank;
+
+import java.util.Scanner;
+
+public class BigSorting {
+	
+	public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        String[] unsorted={"12","22","2","6","98","23"};
+        //String[] unsorted = new String[n];
+       /* for(int unsorted_i=0; unsorted_i < n; unsorted_i++){
+            unsorted[unsorted_i] = in.next();
+        }*/
+        String temp="";
+        for(int i=0;i<n;i++){
+            for(int j=i;j<n;j++){
+                if(Integer.valueOf(unsorted[i])>Integer.valueOf(unsorted[j])){
+                temp=unsorted[j];
+                unsorted[j]=unsorted[i];
+                unsorted[i]=temp;
+                }
+            }
+        }
+        for(int i=0;i<n;i++){
+            System.out.println(unsorted[i]);
+        }
+    }
+
+}
