@@ -32,4 +32,55 @@ public class Solution {
     }
 }
 -------------------------------------------------------------
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static long superDigit(String n, int k) {
+        
+        Long finalNumber=new Long(0);
+        
+        String temp="";
+        
+        if(k<0 || n==null){
+            return 0;
+        }
+        for(int i=0;i<k;i++){
+        temp=temp+n;
+  }
+    
+        finalNumber=Long.valueOf(temp);
+        while(finalNumber>9){
+           
+        finalNumber=findSum(finalNumber);
+        }
+        return finalNumber;
+        
+    }
+    
+     static long findSum(long finalNumber) {
+        long eachDigit=0;
+         long sum=0;
+         
+         while(finalNumber>0){
+           eachDigit=finalNumber%10;
+            finalNumber=finalNumber/10;
+            sum=sum+eachDigit;
+            }
+         return sum;
+     }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String n = in.next();
+        int k = in.nextInt();
+        long result = superDigit(n, k);
+        System.out.println(result);
+        in.close();
+    }
+}
 
