@@ -1,0 +1,39 @@
+--------------------------------------
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+   public static void main(String[] args) {
+        Scanner in =new Scanner(System.in);
+        int len = in.nextInt();
+        int key=0;
+        String value="";
+        Map<Integer,String> sorted=new TreeMap<Integer,String>();
+       // Map<Integer,String> secondHalf=new TreeMap<Integer,String>();
+        for(int i=0;i<len/2;i++){
+            key=in.nextInt();
+            value=in.next();
+            sorted.put(key,(sorted.get(key)==null)?"- ":sorted.get(key)+ "- ");
+    }
+        for(int i=0;i<len/2;i++){
+            key=in.nextInt();
+            value=in.next();
+            sorted.put(key,(sorted.get(key)==null)?value+" ":sorted.get(key)+ ""+value +" ");
+    }
+        print(sorted);
+}
+    static void print(Map<Integer,String> sorted){
+    	
+        for(Integer key: sorted.keySet()){
+           System.out.print(sorted.get(key));
+             
+        }
+    }
+
+}
+-------------------------------------------------------
